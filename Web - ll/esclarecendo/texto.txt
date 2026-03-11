@@ -1,1 +1,0 @@
-Crie um programa em HTML e Javascript que permita criar campos de formulário. Os campos podem ser: campo de texto, campo de email, campo de numero, combobox, radiobox. O nome e/ou as opções do campo devem ser indicados pelo utilizador.
