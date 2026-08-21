@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>####</title>
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+    <!-- <hr>
+    <h1 style="text-align: center; padding: 10px;">Iniciando os estudos Dom</h1>
+    <hr>
+
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo a usar <strong>DOM</strong> em JS</p>
+    <div>Clique em mim</div>
+
+
+    <script>
+        let p1 = document.getElementsByTagName('p')[0]
+        document.write(p1.innerText)
+        p1.style.border = '1px solid red'
+        p1.style.color = 'yellow'
+        p1.style.padding = '10px'
+
+
+        let corpo = document.body
+        corpo.style.backgroundColor = 'blue'
+    </script> -->
+
+    <!-- <div class="container">
+
+
+
+
+        <h1>Eventos DOM</h1>
+
+
+        <div id="area">
+            Interaja...
+        </div>
+
+        
+        <h1>Somando Valores</h1>
+        <input type="number" name="" id="txt1"> + 
+        <input type="number" name="" id="txt2">
+        <button onclick="somar()">SOMAR</button>
+        <div id="res">Resultado</div>
+
+
+    </div> -->
+
+    <!-- <button id="btnMenu">
+
+        
+
+
+        = Abrir Menu
+        
+
+    </button>
+
+    
+    <button id="btnTitulo">
+        Esconder
+
+    </button>
+
+
+        <nav class="menu">
+            <p>Link1</p> 
+            <p>Link2</p> 
+
+        </nav>
+        
+        <h1 class="titulo">Firt sytem</h1>
+        -->
+        
+        <!-- <button id="btnTema">
+            # Dark Mode
+    
+        </button> -->
+        
+        <!-- <input type="text" name="" id="nome" placeholder="Digite o seu nome">
+        <button id="btnEnviar">
+            Enviar
+        </button>
+        <h2 id="resultado"></h2> -->
+
+    <!-- <nav>
+
+        
+        <ul class="navMenu">
+            <li><a href="#">Nome</a></li>
+            <li><a href="#">Terra</a></li>
+            <li><a href="#">Fruto</a></li>
+            <li><a href="#">Animal</a></li>
+        </ul>
+    </nav>
+
+    <button id="btnMenu">=</button> -->
+
+        <input type="text" name="" id="nomeX" placeholder="Digite o seu nome">
+        <button id="btn">
+            Salvar
+        </button>
+        <h2 id="resultado"></h2> 
+
+        <script>
+
+            let input1 = document.querySelector('#nomeX')
+            let btn1 = document.querySelector('#btn')
+            let res1 = document.querySelector('#resultado')
+
+            btn1.addEventListener('click',()=>{
+
+                const name = input1.value.trim()
+                
+                if(name == ''){
+
+                    alert('[ERRO] digite o seu nome')
+                    return
+
+                }
+
+                localStorage.setItem('nome', name)
+                res1.textContent = `Olá, ${name}.`
+
+
+            })
+
+
+
+        </script>
+
+
+
+    <script src="main.js"></script>
+  
+</body>
+</html>
