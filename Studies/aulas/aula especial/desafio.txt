@@ -1,0 +1,12 @@
+Desafio 1 : CONTADOR
+
+  //  Criar um botao "CLIQUE!". Cada clique aumenta +1 e mostra na tela. Salva no localStorage para nao zerar
+
+
+Desafio 2 : MODO ESCURO
+
+   //  Criar um btn "TROCAR TEMA". Ao clicar, deve adicionar/remover a classe .escuro no <body>. Salva se ta ligado ou desligado.
+
+Desafio 3 : PERFIL
+
+    //  2 inputs: Nome e Idade. Um btn "SALVAR". Mostra embaixo "Ola Joao, voce tem 20 anos". Salva os 2 no localStorage e carrega quando abrir.

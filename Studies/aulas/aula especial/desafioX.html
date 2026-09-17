@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="stylesheet" href="">
+<style>
+
+body,button{
+    background-color: goldenrod;
+    font: normal 12pt monospace;
+    
+}
+
+
+body.escuro{
+
+    background-color: black;
+    color: white;
+
+
+}
+
+.escuro .click{
+
+    color: black;
+
+}
+.escuro button{
+
+    background-color: black;
+    color: goldenrod;
+
+}
+
+button{
+    border: 1px solid;
+    border-radius: 10px;
+}
+.click{
+
+
+    width: 300px;
+    background-color: white;
+    margin: 0 auto;
+    box-shadow:1px 1px 2px rgba(0, 0, 0, 0.747) ;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+
+
+}
+
+#number-click{
+
+    padding: 10px;
+
+}
+
+
+</style>
+</head>
+<body>
+
+
+    <!-- #============= DESAFIO 1 =================# -->
+    <h2 style="text-align: center;">DESAFIOS</h2>
+
+    <div class="click">
+
+            <h2>#Desafio 1</h2>
+            <button id="btn-click">CLIQUE!</button>
+
+            <div id="number-click">
+
+                0
+
+               
+                
+            </div>
+
+            <p>2 inputs: Nome e Idade. Um btn "SALVAR". Mostra embaixo "Ola Joao, voce tem 20 anos". Salva os 2 no localStorage e carrega quando abrir. </p>
+
+
+    </div>
+    <!-- #============= DESAFIO 2 =================# -->
+
+    <div class="click">
+
+        <h2>#Desafio 2</h2>
+        <button id="btn-fundo">
+            TROCAR TEMA
+        </button>
+
+
+
+
+
+
+    </div>
+
+    <!-- #============= DESAFIO 3 =================# -->
+
+    <div class="click">
+
+        <h2>#Desafio 3</h2>
+    <form action="#">
+    
+            <label for="nome">Nome
+                <input type="text" name="" id="nome" placeholder="digite o seu nome">
+            </label>
+            <br>
+            <br>
+    
+            <label for="idade">Idade
+                <input type="number" name="" id="idade" >
+            </label>
+
+            <br>
+            <br>
+
+            <button id="btn-salvar">Salvar</button>
+
+            <br>
+            <br>
+
+            <div id="res">
+
+            </div>
+    </form>
+        
+
+
+
+
+
+
+    </div>
+
+  <!-- #============= DESAFIO 1 =================# -->
+<script>
+
+    let btn = document.querySelector('#btn-click')
+    let num = document.querySelector('#number-click')
+    let lastNUm = localStorage.getItem('lastNUm')
+    let n1 = Number(lastNUm)  || 0 
+    num.textContent = n1
+    // lastNUm.textContent = n1
+    
+    btn.addEventListener('click',()=>{
+
+        n1+=1
+        num.textContent = n1
+        localStorage.setItem('lastNUm',n1)
+        
+
+       
+    } )
+
+
+
+</script>
+ <!-- #============= DESAFIO 2 =================# -->
+<script>
+    let btnFundo = document.querySelector('#btn-fundo')
+    let body = document.querySelector('body')
+    let save = localStorage.getItem('salvo')
+    
+
+    btnFundo.addEventListener('click', ()=>{
+
+        body.classList.toggle('escuro')
+        if(body.classList.contains('escuro')){
+
+            btnFundo.textContent = 'Claro'
+            localStorage.setItem('salvo','escuro')
+
+        } else{
+
+            btnFundo.textContent = 'Escuro'
+            localStorage.setItem('salvo','claro')
+
+
+        }
+
+    })
+
+    if(save === 'escuro'){
+
+        body.classList.add('escuro')
+        btnFundo.textContent = 'Claro'
+        
+
+    }
+
+    
+
+
+
+
+
+</script>
+
+<!-- #============= DESAFIO 3 =================# -->
+<script>
+    
+    let inputNome = document.querySelector('#nome') 
+    let inputIdade = document.querySelector('#idade') 
+    let btnSalvar = document.querySelector('#btn-salvar') 
+    let res = document.querySelector('#res') 
+    let dadoSalvo = localStorage.getItem('dados')
+    
+    if(dadoSalvo){
+    
+        let dados = JSON.parse(dadoSalvo)
+
+        // inputNome = dados.nome
+        // inputIdade = dados.idade
+        
+            res.textContent = `Ola, ${dados.nome}, a sua idade e ${dados.idade}`
+    
+    }
+    
+    btnSalvar.addEventListener('click',()=>{
+        let nome = inputNome.value.trim()
+        let idade = inputIdade.value.trim()
+
+        if(nome == "" || idade == ""){
+    
+            alert(`[ERRO]por favor , preencha os campos`)
+    
+        } else{
+
+
+            res.textContent = `Ola, ${nome}, a sua idade e ${idade}`
+
+            
+                    let  dados = {nome:nome, idade:idade}
+                    
+                    localStorage.setItem('dados',JSON.stringify(dados))
+        }
+    
+    })
+
+    
+    
+
+</script>
+
+
+  
+
+
+
+<script src=""></script>
+</body>
+</html>
+
+<!-- Desafio 1 : CONTADOR
+
+  //  Criar um botao "CLIQUE!". Cada clique aumenta +1 e mostra na tela. Salva no localStorage para nao zerar
+
+ -->
+
+
+
+ <!-- Dsafio 2 : MODO ESCURO
+
+   //  Criar um btn "TROCAR TEMA". Ao clicar, deve adicionar/remover a classe .escuro no <body>. Salva se ta ligado ou desligado. -->
+
+
+<!-- 
+    Desafio 3 : PERFIL
+
+    //  2 inputs: Nome e Idade. Um btn "SALVAR". Mostra embaixo "Ola Joao, voce tem 20 anos". Salva os 2 no localStorage e carrega quando abrir. -->

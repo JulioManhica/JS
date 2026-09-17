@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+<style></style>
+</head>
+<body>
+
+    <input type="text" name="" id="nome" placeholder="Digite seu nome">
+    <button id="btn">Adicionar</button>
+
+    <div id="lista"></div>
+
+
+
+<script>
+
+        const input= document.querySelector('#nome')
+        const btn = document.querySelector('#btn')
+        const list = document.querySelector('#lista')
+        const lname = localStorage.getItem('lastName')
+     
+        if (lname){
+            const p = document.createElement('p')
+            p.textContent = lname
+            list.appendChild(p)
+        }
+        
+        btn.addEventListener( 'click', ()=>{
+            
+
+            const name = input.value.trim()
+            if(name == "" ){
+
+                alert(`[ERRO] digite seu nome!` )
+                return
+            }
+
+            localStorage.setItem('lastName',name)
+            const p = document.createElement('p')
+            p.textContent = name
+            list.appendChild(p)
+             input.value = ""
+            
+            
+        }   )
+
+</script>
+
+</body>
+</html>

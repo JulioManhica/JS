@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arrays </title>
+<link rel="stylesheet" href="">
+<style>
+
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: monospace;
+    }
+
+    body{
+
+        background:linear-gradient(135deg, #667eea, #764ba2);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+
+    }
+
+    .container{
+
+            background-color: white;
+            width: 100%;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            
+
+    }
+
+    h2{
+
+        text-align: center;
+        color:#764ba2;
+        margin-bottom: 20px;
+    }
+
+    .input-area{
+
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+       
+    }
+
+    input{
+
+        flex:1;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+    
+    }
+
+    input:focus{
+        border-color: #667eea;
+        outline: none;
+    }
+
+    button{
+
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        background-color: #667eea;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+
+    }
+
+    button:hover{
+
+        background-color: #764ba2;
+        transform: scale(1.05);
+
+    }
+
+
+    li{
+
+        background-color: #F8F9FA;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+
+    li:hover{
+
+            background-color: #e9ecef;
+            transform: translateX(5px);
+            transition: 0.2s;
+
+
+    }
+
+
+
+
+
+
+    .botoes button{
+
+        padding:8px 12px;
+        margin-left: 5px;
+        font-size: 14px;
+
+    }
+
+    .botoes button:nth-child(1){
+
+
+        background-color: #ffc107;
+
+
+
+    }
+    .botoes button:nth-child(2){
+
+        background-color: #dc3545;
+
+
+
+    }
+
+    #totalAluno{
+
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+        color:#555;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>Lista de Alunos</h2>
+
+        <div class="input-area">
+            <input type="text" id="nome" placeholder="digita seu nome">
+            <button id="btn">Adicionar </button>
+        </div>
+
+
+        <ul id="lista" style="list-style: none;">
+
+
+        </ul>
+
+        <p id="totalAluno">
+            
+            Total alunos: 0
+        </p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+<script>
+    let inputNome = document.querySelector('#nome')
+    let btn = document.querySelector('#btn')
+    let ul = document.querySelector('#lista')
+    let alunos = JSON.parse(localStorage.getItem('listaAlunos')) || [] 
+    let total = document.getElementById('totalAluno')
+
+
+   
+
+    btn.addEventListener('click', ()=>{
+
+            let nome = inputNome.value.trim()
+            
+
+            if(nome === ""){
+
+                alert('[ERRO], digite o seu nome!')
+
+            } else {
+
+                alunos.push(nome)
+                salvar()
+                localStorage.setItem('alunos', JSON.stringify(alunos))
+                mostrarLista()
+                editar(i)
+                apagar(i)
+
+
+                inputNome.value = ""
+                inputNome.focus()
+                
+                
+
+            }
+
+    })
+
+    function mostrarLista(){
+
+        ul.innerHTML= ""
+        for(let i=0 ; i < alunos.length; i++){
+
+            ul.innerHTML += `
+            <li>
+                 <span>${alunos[i]}</span>
+                 <div class="botoes">
+                     <button onclick="editar(${i})">Editar</button>
+                     <button onclick="apagar(${i})">Apagar</button>
+                 </div>
+                 
+                 
+            
+             </li>
+            `
+        }
+        inputNome.value = ""
+
+        total.innerHTML = `Total: ${alunos.length} alunos`
+
+        if(alunos.length == 0){
+
+            total.innerHTML = `Sem alunos cadastrados.`
+
+
+        }
+
+    }
+
+    function apagar(i){
+
+       if(confirm(`Tem certeza que quer apagar??`)){
+
+
+           alunos.splice(i, 1)
+            salvar()
+           localStorage.setItem('alunos', JSON.stringify(alunos))
+           mostrarLista()
+
+          
+
+
+
+                }
+
+      inputNome.value = ""
+    }
+
+
+    function editar(i){
+
+        let novoNome = prompt("Digite o novo nome")
+
+        if (novoNome!= null && novoNome!= ""){
+
+                alunos[i] = novoNome
+                salvar()
+                mostrarLista()
+
+                alert("Nome editado com sucesso!")
+
+        }
+
+
+
+
+    }
+
+    
+    function salvar (){
+
+    localStorage.setItem('listaAlunos', JSON.stringify(alunos))
+
+
+    } 
+
+     mostrarLista() 
+
+    
+
+
+
+
+
+
+</script>
+<script src=""></script>
+</body>
+</html>
